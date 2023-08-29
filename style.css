@@ -1,0 +1,300 @@
+body {
+  margin: 0;
+}
+::-webkit-scrollbar {
+  width: 5px;
+  z-index: 999;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: white;
+  border-radius: 5px;
+  border: 0px solid transparent;
+  background-clip: content-box;
+}
+
+#map {
+  height: 100vh;
+  width: 100vw;
+}
+
+#sidebar {
+  position: fixed; /* Fixed position */
+  top: 0; /* Stick the sidebar to the top of the page */
+  bottom: 0; /* Make the sidebar the same height as the page */
+  right: 0; /* Position the sidebar off the right edge of the page */
+  width: 30%; /* Set the width of the sidebar */
+  max-width: 90%;
+  padding: 10px; /* Some padding */
+  box-sizing: border-box; /* Add some box-sizing to make the height include the padding */
+  transition: all 0.3s ease; /* Add a transition to make the sidebar slide in and out smoothly */
+  z-index: 9998;
+  backdrop-filter: blur(15px);
+  margin: 20px 20px 20px 0px;
+  border-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.8); /* Background color */
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.5); /* Add a box shadow to the badge */
+  overflow: hidden;
+}
+
+@media (max-width: 800px) {
+  /* Styles that are only applied when the width of the screen is less than 480 pixels */
+  #sidebar {
+    width: 100%; /* Make the sidebar the full width of the screen */
+    right: 0; /* Position the sidebar on the right edge of the screen */
+  }
+  #sidebar.open {
+    opacity: 0%;
+  }
+}
+
+#sidebar.open {
+  opacity: 0%;
+  z-index: 1;
+  display: none;
+}
+
+#badge {
+  position: fixed; /* Fixed position */
+  bottom: 20px; /* Position the badge 10 pixels from the top */
+  right: 20px; /* Position the badge 10 pixels from the right */
+  width: 80px; /* Set the width and height of the badge to 30 pixels */
+  height: 80px;
+  font-size: 50px; /* Set the font size of the close icon to 20 pixels */
+  line-height: 80px; /* Vertically center the close icon */
+  text-align: center; /* Center the close icon horizontally */
+  cursor: pointer; /* Change the cursor to a pointer when hovering over the badge */
+  color: white;
+  z-index: 9999;
+  border-radius: 50%;
+  border: 4px solid #fff; /* Add a white border to the badge */
+  text-align: center;
+  transition: all 0.3s ease; /* Add a transition to animate the badge */
+  background-color: rgba(0, 0, 0, 0.2); /* Background color */
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.8); /* Add a box shadow to the badge */
+  backdrop-filter: blur(2px);
+  transform: scale(-1, 1);
+}
+
+#badge:active {
+  transform: scale(
+    -0.8,
+    0.8
+  ); /* When the badge is clicked, scale it up to 1.1 times its original size */
+  color: black;
+  border: 4px solid rgb(0, 0, 0); /* Add a white border to the badge */
+}
+
+#badge:hover {
+  border: 4px solid rgba(36, 36, 36, 0);
+}
+
+.leaflet-marker-pane > * {
+  -webkit-transition: transform 2s ease-in-out;
+  -moz-transition: transform 2s ease-in-out;
+  -o-transition: transform 2s ease-in-out;
+  -ms-transition: transform 2s ease-in-out;
+  transition: transform 2s ease-in-out;
+}
+
+.leaflet-marker-pane.no-transition > * {
+  transition: none;
+}
+
+.leaflet-shadow-pane > * {
+  -webkit-transition: transform 2s ease-in-out;
+  -moz-transition: transform 2s ease-in-out;
+  -o-transition: transform 2s ease-in-out;
+  -ms-transition: transform 2s ease-in-out;
+  transition: transform 2s ease-in-out;
+}
+
+.leaflet-shadow-pane.no-transition > * {
+  transition: none;
+}
+
+#options {
+  padding: 0 0 0 0;
+  display: grid;
+  grid-template-columns: 0px 1fr;
+}
+
+#options > label {
+  font-size: large;
+  display: flex;
+  align-items: center;
+}
+
+#options > [type='checkbox'] + label:after {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: #fff;
+  content: '';
+  transition: margin 0.1s linear;
+  box-shadow: 0px 0px 5px #aaa;
+  position: absolute;
+  left: 2px;
+  top: 12px;
+  z-index: 10;
+  cursor: pointer;
+}
+
+#search-container {
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  border-radius: 5px;
+  font-size: x-large;
+  border: #aaa 1px solid;
+  background-color: rgba(255, 255, 255, 0.85);
+  color: black;
+  margin-bottom: 10px;
+  margin-top: 5px;
+}
+
+#search-container > * {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#search-container > span {
+  position: relative;
+  bottom: 2px;
+  left: 2px;
+  color: rgb(110, 110, 110);
+}
+
+#searchbar {
+  width: 100%;
+  height: 35px;
+  font-size: x-large;
+  border: transparent;
+  background-color: transparent;
+  color: black;
+  outline: none;
+}
+
+#car-list-container {
+  overflow: auto;
+  height: 90%;
+  display: grid;
+  grid-template-rows: auto;
+}
+
+#car-list {
+  transition: all 8s;
+}
+
+#car-list > div {
+  border-bottom: #aaa 1px solid;
+  display: grid;
+  grid-template-columns: 0px 150px 1fr;
+}
+
+#car-list > div > * {
+  display: flex;
+  align-items: center;
+}
+
+[type='checkbox'] {
+  position: relative;
+  left: 0px;
+  top: 0px;
+  z-index: 0;
+  -webkit-appearance: none;
+}
+[type='checkbox'] + label {
+  position: relative;
+  display: block;
+
+  font-family: sans-serif;
+  font-size: 24px;
+  line-height: 1;
+  padding-left: 70px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  position: relative;
+  margin-top: 0px;
+  color: white;
+  pointer-events: none;
+}
+[type='checkbox'] + label:before {
+  width: 30px;
+  height: 15px;
+  border-radius: 30px;
+  border: 2px solid #ddd;
+  background-color: #eee;
+  content: '';
+  margin-right: 15px;
+  transition: background-color 0.5s linear;
+  z-index: 5;
+  position: absolute;
+  left: 0px;
+  cursor: pointer;
+  pointer-events: all;
+}
+[type='checkbox'] + label:after {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: #fff;
+  content: '';
+  transition: margin 0.1s linear;
+  box-shadow: 0px 0px 5px #aaa;
+  position: absolute;
+  left: 2px;
+  top: 15px;
+  z-index: 10;
+  cursor: pointer;
+}
+[type='checkbox']:checked + label:before {
+  background-color: #2b8718;
+}
+[type='checkbox']:checked + label:after {
+  margin: 0 0 0 15px;
+}
+
+.zoomButton {
+  font-size: 1.6rem;
+  display: none !important;
+  color: transparent;
+  text-shadow: 0 0 0 white;
+  pointer-events: none;
+  position: relative;
+  right: 25px;
+  bottom: 0px;
+}
+
+.zoomButton::before {
+  display: hidden;
+  position: relative;
+  left: 25px;
+  content: '';
+  pointer-events: all;
+  width: 30px;
+  height: 40px;
+}
+
+.zoomButton::after {
+  content: '';
+  color: white;
+  pointer-events: none;
+}
+
+[type='checkbox']:checked ~ .zoomButton {
+  display: flex !important;
+}
+
+.zoomButton:hover {
+  cursor: pointer;
+}
+
+.no-transition {
+  transition: none;
+}

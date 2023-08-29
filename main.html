@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>E-Track</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+      integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+      crossorigin=""
+    />
+    <script
+      src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+      integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+      crossorigin=""
+    ></script>
+    <script src="./pouchdb.js"></script>
+    <script src="./L.TileLayer.PouchDBCached.js"></script>
+  </head>
+  <body>
+    <div id="map"></div>
+    <div id="badge">
+      <div id="toggle">⛟</div>
+    </div>
+    <div id="sidebar">
+      <div id="options">
+        <input type="checkbox" id="display-selected-cars-checkbox" />
+        <label for="display-selected-cars-checkbox"
+          >Nur ausgewaehlte Fahrzeuge</label
+        >
+      </div>
+      <div id="search-container">
+        <span>🔎︎</span>
+        <input id="searchbar" type="search" placeholder="Suchen" />
+      </div>
+      <div id="car-list-container">
+        <div id="car-list"></div>
+      </div>
+    </div>
+    <script src="newScript.js"></script>
+  </body>
+</html>
